@@ -101,7 +101,10 @@ public struct Release: CustomStringConvertible, ResourceType, Identifiable {
         return "\(url)"
     }
     
-    public init(id: ID<Release>, tag: String, url: URL, name: String? = nil, isDraft: Bool = false, isPrerelease: Bool = false, assets: [Asset]) {
+    /// The date at which the release was published.
+    public let publishedAt: Date
+    
+    public init(id: ID<Release>, tag: String, url: URL, name: String? = nil, isDraft: Bool = false, isPrerelease: Bool = false, assets: [Asset], publishedAt: Date) {
         self.id = id
         self.tag = tag
         self.url = url
@@ -109,6 +112,7 @@ public struct Release: CustomStringConvertible, ResourceType, Identifiable {
         self.isDraft = isDraft
         self.isPrerelease = isPrerelease
         self.assets = assets
+        self.publishedAt = publishedAt
     }
 
     private enum CodingKeys: String, CodingKey {
@@ -119,6 +123,7 @@ public struct Release: CustomStringConvertible, ResourceType, Identifiable {
         case name
         case url = "html_url"
         case assets
+        case publishedAt = "published_at"
     }
 }
 
