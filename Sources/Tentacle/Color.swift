@@ -31,4 +31,9 @@ import Foundation
             self.init(red: r, green: g, blue: b, alpha: 1)
         }
     }
+#else
+    // linux
+    struct Color {
+        var hex: String
+    }
 #endif
