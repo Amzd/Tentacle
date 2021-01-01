@@ -33,7 +33,7 @@ import Foundation
     }
 #else
     // linux
-    struct Color {
+    struct Color: Hashable {
         var hex: String
     }
 #endif
